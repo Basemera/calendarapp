@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="vendor/autoload.php" colors = "true" verbose="true" stopOnFailure="false">
+<testsuites>
+<testsuite name="Application Test Suite">
+<directory>Unittests/Test/</directory>
+
+</testsuite>
+</testsuites>
+<php>
+
+<server name="DB_HOST" value="127.0.0.1" />
+<server name="DB_USER" value="root" />
+<server name="DB_PASSWD" value="root" />
+<server name="DB_DBNAME" value="calendar_test" />
+</php>
+</phpunit>

@@ -20,13 +20,23 @@ class Router
         self::on($route, $callback);
     }
 
+    public static function put($route, $callback)
+    {
+        if (strcasecmp($_SERVER['REQUEST_METHOD'], 'POST') !== 0) {
+            return;
+        }
+
+        self::on($route, $callback);
+    }
+
     public static function on($regex, $cb)
     {
         $params = $_SERVER['REQUEST_URI'];
         $params = (stripos($params, "/") !== 0) ? "/" . $params : $params;
         $regex = str_replace('/', '\/', $regex);
         $is_match = preg_match('/^' . ($regex) . '$/', $params, $matches, PREG_OFFSET_CAPTURE);
-
+        // print($is_match);
+        // print_r($_SERVER['REQUEST_URI']);
         if ($is_match) {
             // first value is normally the route, lets remove it
             array_shift($matches);

@@ -1,5 +1,6 @@
 <?php namespace App\Controller;
 use App\Model\User;
+// require "App\Model\User.php";
 
 class UserController {
     public function getUser() {
@@ -11,8 +12,10 @@ class UserController {
         // print_r($request->getJSON());
         $data =  $request->getJSON(); 
         $user = new User();
+        $password = User::hashPassword($data['password']);
+        $data['password'] = $password;
         try {
-            $res = $user->createUser($data);
+            $res = $user->Create($data);
 
         } catch(\Exception $e) {
             $response->status(400)->toJSON($e->getMessage());

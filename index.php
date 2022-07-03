@@ -11,6 +11,9 @@ use App\Lib\App;
 use App\Lib\Router;
 use App\Lib\Request;
 use App\Lib\Response;
+require "./bootstrap.php";
+
+// $user = User::Create([    'name' => "Ahmed Khan",    'email' => "ahmed.khan@lbs.com",    'password' => password_hash("ahmedkhan",PASSWORD_BCRYPT), ]);
 
 Router::get('/', function () {
     (new UserController())->getUser();
@@ -37,6 +40,13 @@ Router::post('/login', function (Request $req, Response $res) {
 
 Router::post('/invite', function (Request $req, Response $res) {
     (new InviteController())->createInvite($req, $res);
+    // $post = Posts::add($req->getJSON());
+    // $res->status(201)->toJSON($post);
+});
+
+Router::post('/calendar/([0-9]*)', function (Request $req, Response $res) {
+    // print_r($req);
+    (new InviteController())->updateInvite($req, $res);
     // $post = Posts::add($req->getJSON());
     // $res->status(201)->toJSON($post);
 });
