@@ -12,7 +12,7 @@ class InviteController {
         $user = $request->getAuth();
         if ($user) {
             $data = $request->getJSON();
-            $data['invitee_id'] = $user->id;
+            $data['sender_id'] = $user->id;
             $invite = new Invite();
             $res = $invite->Create($data);
             $response->status(201)->toJSON($res);
