@@ -38,5 +38,5 @@ Create an application that allows users to send out invites
 
 
 ### Work to do
-- Add unit tests and integration tests. I have found it hard to add unit tests without a framework
+- Add unit tests and integration tests. I am working on figuring this out
 
